@@ -1,0 +1,12 @@
+en:
+  static_pages:
+    home:
+      sign_up_now: "Sign up now!"
+      welcome: "Welcome to the Test App"
+      title: "This is the home page for the test application."
+    about:
+      about: "About"
+    help:
+      help: "Help"
+    contact:
+      contact: "Contact"
