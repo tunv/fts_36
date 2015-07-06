@@ -1,0 +1,11 @@
+en:
+  layouts:
+    header:
+      help: "Help"
+      sign_in: "Sign in"
+      test_app: "TEST APP"
+    footer:
+      about: "About"
+      contact: "Contact"
+      new: "News"
+      ruby: "Ruby on Rails Tutorial"
