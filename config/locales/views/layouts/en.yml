@@ -3,6 +3,8 @@ en:
     header:
       help: "Help"
       sign_in: "Sign in"
+      sign_out: "Sign out"
+      setting: "Settings"
       test_app: "TEST APP"
     footer:
       about: "About"
