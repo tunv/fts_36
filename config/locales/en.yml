@@ -22,3 +22,6 @@
 en:
   hello: "Hello world"
   ruby: "Ruby on Rails Tutorial"
+  submit: "Submit"
+  sign_up: "Sign up"
+  character: "characters minimum"
