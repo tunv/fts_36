@@ -1,0 +1,19 @@
+<tr>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td class="<%= user.id %>_btn_admin"><%= user.role %></td>
+  <td>
+    <% if user.normal? %>
+      <%= link_to t("set_admin"), admin_user_path(user),
+        method: :patch, remote: true, class: "#{user.id}_btn_admin btn btn-primary" %>
+    <% else %>
+      <%= link_to t("admin"), admin_user_path(user),
+        method: :patch, remote: true, class: "#{user.id}_btn_admin btn btn-primary", disabled: true %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to t("delete"), admin_user_path(user), 
+      method: :delete, data: {confirm: (t "confirm")} %>
+  </td>
+
+</tr>

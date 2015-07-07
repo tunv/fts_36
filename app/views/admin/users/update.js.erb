@@ -1,0 +1,6 @@
+<% if @user.errors.any? %>
+  alert(t "error");
+<% else %>
+  $(".<%= @user.id%>_btn_admin").html("Admin");
+  $(".<%= @user.id%>_btn_admin").attr("disabled", "true");
+<% end %>
