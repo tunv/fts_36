@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     root to: "categories#index"
     resources :categories, except: :show
     resources :users, only: [:index, :update, :destroy]
+    resources :questions
   end
   
   resources :users, only: :show

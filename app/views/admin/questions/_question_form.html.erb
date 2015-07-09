@@ -1,0 +1,20 @@
+<%= form_for [:admin, @question] do |f| %>
+  <table class="table table-bordered">
+    <tr>
+      <td>Categories</td>
+      <td>
+        <%= f.collection_select(:category_id, @categories, :id,
+          :name, {prompt: false},{class: "form-control"}) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :question %></td>
+      <td><%= f.text_field :content, class: "form-control" %></td>
+    </tr>
+    <%= f.fields_for :answers do |builder| %>
+      <%= render "answer_fields", f: builder %>
+    <% end %>
+  </table>
+  <p><%= link_to_add_fields t(:add_answer), f, :answers %></p>
+  <%= f.submit t(:submit), class: "btn btn-primary", name: "btn_submit" %>
+<% end %>
