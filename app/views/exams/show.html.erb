@@ -1,0 +1,12 @@
+<div class="row">
+  <h1><%= @exam.category.name %></h1>
+  <h2><%= t "results" %>: <%= @exam.mark %></h2>
+  <table class="table table-bordered">
+    <tr>
+      <th><%= t "question" %></th>
+      <th><%= t "your_answer" %></th>
+      <th><%= t "correct" %></th>      
+    </tr>
+    <%= render @exam.results %>
+  </table>
+</div>

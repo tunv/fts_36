@@ -1,6 +1,5 @@
 class ExamsController < ApplicationController
   load_and_authorize_resource
-  before_action :check_only_one_test, only: :edit
 
   def index
     @exam = Exam.new
@@ -12,7 +11,7 @@ class ExamsController < ApplicationController
   end
 
   def create
-    @exam.user = current_user
+    @exam.user_id = current_user.id
     if @exam.save
       flash[:success] = t "create_success"
     else
@@ -22,39 +21,29 @@ class ExamsController < ApplicationController
   end
 
   def edit
-    if @exam.created?
-      @exam.update_start_time Time.zone.now 
-      @exam.update_status :testing
-    elsif @exam.completed?
-      redirect_to exam_path(@exam)
+    if @exam.started_at.nil?
+      started_at = Time.zone.now
+      @exam.update_attributes status: Settings.user.view, started_at: started_at
     end
+    @timeleft = @exam.category.max_time * Settings.user.maximum - (Time.zone.now - @exam.started_at).to_i
   end
 
-  def update    
-    if !params[:complete].nil?
-      @exam.update_status_completed
-      respond_to do |format|
-        format.js
-      end 
+   def update
+    if @exam.update_attributes update_params
+      flash[:success] = t "update_success"
+      @exam.time_out? ? (redirect_to exam_path @exam) 
+        : (redirect_to edit_exam_path @exam)
     else
-      if @exam.update_attributes exam_params
-        flash[:success] = t "update_success"      
-      else
-        flash[:danger] = t "update_fail"
-      end
-      redirect_to root_path
-    end    
+      redirect_to :back
+    end
   end
 
   private  
-  def exam_params
-    params.require(:exam).permit :category_id, results_attributes: [:id, :answer_id]
+  def create_params
+    params.require(:exam).permit :category_id
   end
 
-  def check_only_one_test
-    if current_user.exams.other_exam(@exam.id).testing.count > 0
-      flash[:danger] = t "only_test"
-      redirect_to root_path
-    end
+  def update_params
+    params.require(:exam).permit results_attributes: [:id, :answer_id]
   end
 end
