@@ -51,3 +51,7 @@ en:
   update_fail: "Update fail"
   profile: "Profile"
   signin_pls: "Please loggin before!"
+  edit_profile: "Update Profile"
+  new_pass_note: "(leave blank if you don't want to change it)"
+  current_pass_note: "(we need your current password to confirm your changes)"
+  change_avatar: "change"
