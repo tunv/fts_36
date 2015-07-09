@@ -1,0 +1,24 @@
+<div class="container">
+  <%= form_for @exam do |f| %>
+    <div class="col-md-5 col-md-offset-2">
+      <%= f.collection_select(:category_id, @categories, :id,
+        :name, {prompt: false}, {class: "form-control"}) %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit t("submit"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <br>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <th><%= t "date" %></th>
+      <th><%= t "categories" %></th>
+      <th><%= t "status" %></th>
+      <th><%= t "result" %></th>
+      <th><%= t "time" %></th>
+      <th></th>
+    </tr>
+    <%= render @exams %>
+  </table>
+</div>

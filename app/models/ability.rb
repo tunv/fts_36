@@ -7,7 +7,9 @@ class Ability
       can :manage, :all
     else
       can :update, User, id: user.id
-      can :read, :all
+      can :create, Exam
+      can [:read, :update], Exam, user_id: user.id
+      can [:read], Category
     end
   end
 end

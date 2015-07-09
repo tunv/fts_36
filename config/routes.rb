@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "contact" => "static_pages#contact"
 
   resources :categories, only: :index
+  resources :exams, except: :new
+  
   namespace :admin do
     root to: "categories#index"
     resources :categories, except: :show
