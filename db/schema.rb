@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20150707014158) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "max_question"
+    t.integer  "max_time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "exams", force: :cascade do |t|
