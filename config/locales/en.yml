@@ -55,3 +55,8 @@ en:
   new_pass_note: "(leave blank if you don't want to change it)"
   current_pass_note: "(we need your current password to confirm your changes)"
   change_avatar: "change"
+  new_question: "New question"
+  questions: "Questions"
+  remove: "Remove"
+  correct: "Corrrect"
+  add_answer: "Add a answer"

@@ -1,0 +1,25 @@
+<div class="form-control">
+  <%= link_to t("create_new_question"), new_admin_question_path %>
+</div>
+<%= will_paginate %>
+<table class="table table-bordered">
+  <tr>
+    <th><%= t "id" %></th>
+    <th><%= t "content" %></th>
+    <th><%= t "categories" %></th>
+    <th><%= t "answers" %></th>
+    <th></th>
+  </tr>
+  <% @questions.each do |question| %>
+    <tr>
+      <%= render question %>
+      <td><%= render question.answers %></td>
+      <td>
+        <%= link_to t("link_edit"), edit_admin_question_path(question) %>
+        <%= link_to t("delete"), admin_question_path(question),
+          method: :delete, data: {confirm: (t "confirm")} %>
+      </td>
+    </tr>
+  <% end %>  
+</table>
+<%= will_paginate %>

@@ -2,3 +2,4 @@ user:
   maximum: 60
   minimum: 6
   avatar: https://secure.gravatar.com/avatar/#{gravatar_id}
+  answer_number: 4
