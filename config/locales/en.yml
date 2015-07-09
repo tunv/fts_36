@@ -49,3 +49,5 @@ en:
   create_fail: "Create fail"
   update_success: "Update success"
   update_fail: "Update fail"
+  profile: "Profile"
+  signin_pls: "Please loggin before!"
