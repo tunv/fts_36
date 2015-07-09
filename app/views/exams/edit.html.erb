@@ -1,0 +1,13 @@
+<h1><%= t "exam" %></h1>
+<%= form_for [@category, @exam] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <ul class="bxslider">
+    <%= f.fields_for :results do |builder| %>
+      <%= render "exam_form", f: builder %>
+    <% end %>
+  </ul>
+  <hr>
+  <div class="row">
+    <%= f.submit t("submit"), class: "btn btn-primary", data: {confirm: t("finish_exam")} %>
+  </div>
+<% end %>
