@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
   get "contact" => "static_pages#contact"
 
+  resources :categories, only: :index
   namespace :admin do
-    root to: "users#index"
+    root to: "categories#index"
+    resources :categories, except: :show
     resources :users, only: [:index, :update, :destroy]
   end
 
