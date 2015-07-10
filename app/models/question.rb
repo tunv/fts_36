@@ -11,5 +11,6 @@ class Question < ActiveRecord::Base
   validates :content, presence: true, length: {maximum: Settings.user.maximum}
   validates :category_id, presence: true
 
-  scope :random_questions, ->number{limit(number).sort_by{rand}}
+  scope :random_questions, ->{limit(Settings.user.minimum).order("RANDOM()")}
+
 end

@@ -1,4 +1,10 @@
 <h1><%= t "exam" %></h1>
+<header>
+  <p id="text-left"><%= @exam.created_at.to_formatted_s :db %></p>
+  <p class="countdown" id="text-right">
+    <span id="timeleft" data-time=<%= @timeleft%>><% @timeleft %></span>
+  </p>
+</header>
 <%= form_for [@category, @exam] do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <ul class="bxslider">
@@ -8,6 +14,6 @@
   </ul>
   <hr>
   <div class="row">
-    <%= f.submit t("submit"), class: "btn btn-primary", data: {confirm: t("finish_exam")} %>
+    <%= f.submit t("submit"), class: "btn btn-primary", id: "exam_submit" %>
   </div>
 <% end %>

@@ -1,8 +1,11 @@
 <tr>
-  <td><%= exam.created_at %></td>
+  <td><%= exam.created_at.to_formatted_s :db %></td>
   <td><%= exam.category.name %></td>
-  <td><%= exam.status %></td>
-  <td></td>
-  <td></td>
-  <td><%= link_to t("exam_start"), edit_exam_path(exam), class: "btn btn-primary" %></td>
+  <td><%= exam.mark %></td>
+  <td data-no-turbolink="true">
+   <%= exam.status == t("start") ? 
+     (link_to t("exam_start"), edit_exam_path(exam), class: "btn btn-primary")
+     : (exam.time_out? ? (link_to t("exam_view"), exam_path(exam), class: "btn btn-primary") 
+     : (link_to t("exam_view"), edit_exam_path(exam), class: "btn btn-primary"))%>
+  </td>
 </tr>
