@@ -8,7 +8,7 @@ class Exam < ActiveRecord::Base
   accepts_nested_attributes_for :results, allow_destroy: true
 
   before_create :create_default_status, :random_questions
-  before_update :update_result
+  before_update :update_result, :update_status
   
   scope :order_created, ->{order created_at: :desc}
   scope :other_exam, ->exam_id{where.not id: exam_id}
@@ -37,5 +37,9 @@ class Exam < ActiveRecord::Base
       result.answer && result.answer.correct
     end.count
     self.mark = "#{mark.to_s}/#{self.category.max_question}"
+  end
+
+  def update_status
+    ResultMailer.result_exam(self).deliver if time_out?  
   end
 end

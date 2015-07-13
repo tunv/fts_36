@@ -1,0 +1,8 @@
+<%= t "mail_result" %>
+<%= t "mark" %><%= @exam.mark %>
+<% @exam.results.each do |result| %>
+  <%= t "question" %><%= result.question.content %>, 
+  <%= t "your_answer" %><%= result.answer.content unless result.answer.nil? %>, 
+  <%= t "correct" %> 
+  <%= result.answer.try(:correct?) ? t("true") : t("false") %>
+<% end %>
