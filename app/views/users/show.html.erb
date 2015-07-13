@@ -9,3 +9,18 @@
     </section>
   </aside>
 </div>
+<div>
+  <% if @user.normal? %>
+    <table class="table table-bordered">
+      <tr>
+        <th><%= t "date" %></th>
+        <th><%= t "categories" %></th>
+        <th><%= t "mark" %></th>
+        <th></th>
+      </tr>
+      <%= fields_for :exams do |builder| %>
+        <%= render @user.exams %>
+      <% end %>
+    </table>
+  <% end %>
+</div>
