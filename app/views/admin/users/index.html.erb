@@ -1,9 +1,15 @@
 <% provide :title, t("All_user") %>
 <h1><%= t "All_user" %></h1>
-<%= will_paginate %>
-<div class="container">
-  <table class="table table-bordered">
-    <%= render @users %>
-  </table>
-</div>
-<%= will_paginate %>
+<%= render "search_form" %>
+
+<% if @users.present? %>
+  <%= will_paginate %>
+  <div class="container">
+    <table class="table table-bordered">
+      <%= render @users %>
+    </table>
+  </div>
+  <%= will_paginate %>
+<% else %>
+  <p><%= t "search_result" %><%= params[:search] %></p>
+<% end %>

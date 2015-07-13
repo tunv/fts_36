@@ -11,6 +11,7 @@ gem "figaro"
 gem "mailgun-ruby", "~>1.0.2", require: "mailgun"
 gem "will_paginate", "~> 3.0.6"
 gem "bootstrap-sass", "~> 3.3.5"
+gem "ransack"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets

@@ -2,7 +2,13 @@ class Admin::UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = @users.paginate page: params[:page]
+    @search = User.search params[:q]
+    @users = @search.result.page params[:page]
+
+    respond_to do |format|
+      format.html
+      format.json {render json: [:admin, @users]}
+    end
   end
 
   def update
