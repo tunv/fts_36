@@ -1,5 +1,5 @@
 <tr>
-  <td><%= user.name %></td>
+  <td><%= link_to user.name, user_path(user) %></td>
   <td><%= user.email %></td>
   <td class="<%= user.id %>_btn_admin"><%= user.role %></td>
   <td>
