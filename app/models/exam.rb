@@ -11,13 +11,13 @@ class Exam < ActiveRecord::Base
   before_update :update_result, :update_status
   
   scope :order_created, ->{order created_at: :desc}
-  scope :other_exam, ->exam_id{where.not id: exam_id}
-
+  scope :faker_exam, ->{where(status: Settings.user.start)
+    .where "created_at <= ?", Settings.user.number_days.weeks.ago}
 
   def time_out?
     if started_at
       execute_time = (Time.zone.now - self.started_at).to_i
-      max_time = self.category.max_time * 60
+      max_time = self.category.max_time * Settings.user.maximum
       execute_time >= max_time
     end
   end
