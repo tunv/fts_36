@@ -1,12 +1,12 @@
 <div class="row">
   <h1><%= @exam.category.name %></h1>
   <h2><%= t "results" %>: <%= @exam.mark %></h2>
-  <table class="table table-bordered">
-    <tr>
-      <th><%= t "question" %></th>
-      <th><%= t "your_answer" %></th>
-      <th><%= t "correct" %></th>      
-    </tr>
-    <%= render @exam.results %>
-  </table>
+  <%= form_for [@category, @exam] do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <ul class="bxslider">
+      <%= f.fields_for :results do |builder| %>
+        <%= render "exam_form", f: builder %>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

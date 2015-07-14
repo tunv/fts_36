@@ -7,6 +7,8 @@ gem "rails", "4.2.1"
 gem "sqlite3"
 gem "cancancan", "~> 1.10"
 gem "devise"
+gem "figaro"
+gem "mailgun-ruby", "~>1.0.2", require: "mailgun"
 gem "will_paginate", "~> 3.0.6"
 gem "bootstrap-sass", "~> 3.3.5"
 # Use SCSS for stylesheets

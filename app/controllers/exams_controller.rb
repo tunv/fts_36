@@ -28,14 +28,13 @@ class ExamsController < ApplicationController
     @timeleft = @exam.category.max_time * Settings.user.maximum - (Time.zone.now - @exam.started_at).to_i
   end
 
-   def update
+  def update
     if @exam.update_attributes update_params
       flash[:success] = t "update_success"
-      @exam.time_out? ? (redirect_to exam_path @exam) 
-        : (redirect_to edit_exam_path @exam)
     else
-      redirect_to :back
+      flash[:danger] = t "update_fail"
     end
+    redirect_to root_path
   end
 
   private  
