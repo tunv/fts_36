@@ -75,3 +75,5 @@ en:
   true: "True"
   false: "False"
   result_mail: "Result Mailer"
+  search_result: "There are no posts containing the term(s): "
+  search: "Search"

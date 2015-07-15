@@ -1,0 +1,9 @@
+<%= search_form_for @search, url: admin_users_path, html: {method: :get} do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name_cont %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email_cont %>
+
+  <%= f.submit t "search" %>
+<% end %>
