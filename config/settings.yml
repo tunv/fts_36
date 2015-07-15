@@ -6,4 +6,5 @@ user:
   start: Start
   view: View
   mail: from@example.com
-  number_days: 1
+  number_weeks: 1
+  time: 2

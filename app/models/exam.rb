@@ -9,10 +9,11 @@ class Exam < ActiveRecord::Base
 
   before_create :create_default_status, :random_questions
   before_update :update_result, :update_status
+  after_create :remind_user
   
   scope :order_created, ->{order created_at: :desc}
   scope :faker_exam, ->{where(status: Settings.user.start)
-    .where "created_at <= ?", Settings.user.number_days.weeks.ago}
+    .where "created_at <= ?", Settings.user.number_weeks.weeks.ago}
 
   def time_out?
     if started_at
@@ -40,6 +41,10 @@ class Exam < ActiveRecord::Base
   end
 
   def update_status
-    ResultMailer.result_exam(self).deliver if time_out?  
+    ResultMailer.result_exam(self).deliver if time_out?
+  end
+
+  def remind_user
+    RemindUserWorker.perform_in Settings.user.time.hours, id
   end
 end
