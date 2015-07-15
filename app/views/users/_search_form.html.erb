@@ -1,0 +1,6 @@
+<%= search_form_for @search, url: user_path, html: {method: :get} do |f| %>
+  <%= f.label :category_name_cont, t("category") %>
+  <%= f.text_field :category_name_cont %>
+
+  <%= f.submit t "search" %>
+<% end %>
