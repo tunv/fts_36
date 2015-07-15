@@ -2,6 +2,9 @@
   <div class="row">
     <h1><%= t "categories" %></h1>
     <%= link_to t("exam_start"), exams_path, class: "btn btn-primary", id: "button" %>
+    <div>
+      <%= render "search_form" %>
+    </div>
     <table class="table table-bordered">
       <tr>
         <th><%= t "id" %></th>
@@ -9,7 +12,12 @@
         <th><%= t "max_question" %></th>
         <th><%= t "max_time" %></th>
       </tr>
-      <%= render @categories %>
+      <% if @categories.present? %>
+        <%= render @categories %>
+        <%= will_paginate %>
+      <% else %>
+        <p><%= t "search_result" %><%= params[:search] %></p>
+      <% end %>
     </table>
   </div>
 </div>

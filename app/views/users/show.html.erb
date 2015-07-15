@@ -18,8 +18,15 @@
         <th><%= t "mark" %></th>
         <th></th>
       </tr>
-      <%= fields_for :exams do |builder| %>
-        <%= render @user.exams %>
+      <div>
+        <%= render "search_form" %>
+      </div>
+      <% if @exams.present? %>
+        <%= fields_for :exams do |builder| %>
+          <%= render @exams %>
+        <% end %>
+      <% else %>
+        <p><%= t "search_result" %></p>
       <% end %>
     </table>
   <% end %>
