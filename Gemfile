@@ -14,6 +14,8 @@ gem "bootstrap-sass", "~> 3.3.5"
 gem "ransack"
 gem "sidekiq"
 gem "whenever", require: false
+gem "roo"
+gem "iconv", "~> 1.0.3"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
