@@ -77,3 +77,5 @@ en:
   result_mail: "Result Mailer"
   search_result: "There are no posts containing the term(s): "
   search: "Search"
+  alert_mail: "Alert Mailer"
+  title: "You don't finshed a exam. check it please :"
