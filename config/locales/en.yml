@@ -60,7 +60,7 @@ en:
   remove: "Remove"
   correct: "Corrrect"
   add_answer: "Add a answer"
-  exam: "Exam"
+  exam: "Exams"
   date: "Date"
   status: "Status"
   result: "Result"
@@ -80,3 +80,4 @@ en:
   alert_mail: "Alert Mailer"
   title: "You don't finshed a exam. check it please :"
   category: "Category"
+  start_new: "Start new"

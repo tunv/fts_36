@@ -29,7 +29,7 @@ class Exam < ActiveRecord::Base
   end
 
   def random_questions
-    questions = self.category.questions.random_questions
+    questions = self.category.questions.random_questions self.category.max_question
     questions.each{|question| self.results.build question: question}
   end
 
