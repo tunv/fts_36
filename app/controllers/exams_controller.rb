@@ -17,7 +17,7 @@ class ExamsController < ApplicationController
     else
       flash[:danger] = t "create_fail"
     end
-    redirect_to root_path
+    redirect_to exams_path
   end
 
   def edit
@@ -34,7 +34,7 @@ class ExamsController < ApplicationController
     else
       flash[:danger] = t "update_fail"
     end
-    redirect_to root_path
+    redirect_to exams_path
   end
 
   private  

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
   
-  root "static_pages#home"
-
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
   get "contact" => "static_pages#contact"
@@ -10,11 +8,16 @@ Rails.application.routes.draw do
   resources :categories, only: :index
   resources :exams, except: :new
 
+  unauthenticated do
+    root "static_pages#home"
+  end
+
   authenticated :user do
     root to: "exams#index", as: :authenticated_root
   end
+
   namespace :admin do
-    root to: "categories#index"
+    root "categories#index"
     resources :categories, except: :show
     resources :users, only: [:index, :update, :destroy]
     resources :questions
