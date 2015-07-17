@@ -10,7 +10,16 @@ class Question < ActiveRecord::Base
 
   validates :content, presence: true, length: {maximum: Settings.user.maximum}
   validates :category_id, presence: true
+  validate :check_correct_answers_num
 
   scope :random_questions, ->number{order("RANDOM()").limit(number)}
+
+  def check_correct_answers_num
+    correct_answers_num = answers.select{|ans| ans.correct}.count
+    unless correct_answers_num == Settings.user.correct_num_answer
+      errors.add :base, I18n.t("wrong_num_correct_answers",
+        content: content)
+    end
+  end
 
 end
