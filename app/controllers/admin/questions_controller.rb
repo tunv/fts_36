@@ -8,7 +8,7 @@ class Admin::QuestionsController < ApplicationController
   def new
     @question = Question.new
     @categories = Category.all
-    Settings.user.answer_number.times {@question.answers.build}
+    4.times {@question.answers.build}
   end
 
   def create
