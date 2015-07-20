@@ -1,12 +1,4 @@
 user:
-  maximum: 60
-  minimum: 6
-  correct_num_answer: 1
-  avatar: https://secure.gravatar.com/avatar/#{gravatar_id}
-  answer_number: 4
   start: Start
   view: View
   mail: from@example.com
-  number_weeks: 1
-  time: 2
-  min_number: 0
