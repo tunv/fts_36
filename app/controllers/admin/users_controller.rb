@@ -15,7 +15,6 @@ class Admin::UsersController < ApplicationController
   def update
     @user.update_attributes role: :admin
     respond_to do |format|
-      format.html
       format.js
     end
   end
