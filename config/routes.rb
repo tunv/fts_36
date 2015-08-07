@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {registrations: "registrations"}
+  devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
   
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
   get "contact" => "static_pages#contact"
-
-  resources :categories, only: :index
+  match "/users/:id/finish_signup" => "users#finish_signup", via: [:get,:patch], as: :finish_signup
+  match '/users/auth/:action/', :to => 'omniauth_callbacks#action',via: [:get,:patch]
   resources :exams, except: :new
 
   unauthenticated do
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root to: "exams#index", as: :authenticated_root
+    resources :categories
   end
 
   namespace :admin do
